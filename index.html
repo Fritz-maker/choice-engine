@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choice Engine</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            opacity: 0.95;
+        }
+        
+        .perspective-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .perspective-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .perspective-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .perspective-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .free-will .perspective-title {
+            color: #4CAF50;
+        }
+        
+        .determinism .perspective-title {
+            color: #FF6B6B;
+        }
+        
+        .perspective-desc {
+            font-size: 1rem;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+        
+        .loops-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .loop-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .loop-card:hover {
+            transform: scale(1.05);
+            background: rgba(255,255,255,0.25);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .loop-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .loop-desc {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+        
+        .start-section {
+            text-align: center;
+            margin: 60px 0;
+        }
+        
+        .start-btn {
+            background: linear-gradient(45deg, #FF6B6B, #4CAF50);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .start-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        .engine-description {
+            background: rgba(0,0,0,0.2);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            opacity: 0.7;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .perspective-intro {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Choice Engine</h1>
+            <p class="subtitle">Navigate the Ultimate Question: Do You Choose, or Are You Chosen?</p>
+            <div class="intro-text">
+                Welcome to Choice Engine, where the age-old debate between free will and determinism comes alive through interactive exploration. Every click, every decision, every thought you have as you navigate these loops raises the fundamental question: Are you freely choosing your path, or is your path choosing you?
+            </div>
+        </header>
+
+        <div class="perspective-intro">
+            <div class="perspective-card free-will">
+                <h3 class="perspective-title">🎯 Free Will</h3>
+                <p class="perspective-desc">
+                    "You are the author of your choices. Every decision emerges from your conscious will, your values, your reasoning. Even your engagement with this system right now is a product of your autonomous choice to explore these ideas."
+                </p>
+            </div>
+            <div class="perspective-card determinism">
+                <h3 class="perspective-title">⚙️ Determinism</h3>
+                <p class="perspective-desc">
+                    "Your choices are inevitable outcomes of prior causes. The neurons firing as you read this, your decision to continue or stop, even your feeling of choosing—all determined by the unbreaking chain of causation that led to this moment."
+                </p>
+            </div>
+        </div>
+
+        <div class="engine-description">
+            <h3 style="margin-bottom: 20px; font-size: 1.5rem;">The Paradox Engine</h3>
+            <p style="font-size: 1.1rem; line-height: 1.6;">
+                As you progress through these six loops, <strong>The Engine</strong> observes a fascinating paradox: if determinism is true, then your growing conviction in free will was determined. If free will is true, then your choice to believe in determinism was freely made. Each perspective, when deeply understood, somehow validates the other's possibility.
+            </p>
+        </div>
+
+        <div class="loops-grid">
+            <a href="consciousness.html" class="loop-card">
+                <h4 class="loop-title">1. Consciousness & Decision</h4>
+                <p class="loop-desc">The nature of conscious choice - are you experiencing genuine decision-making or witnessing predetermined mental events?</p>
+            </a>
+
+            <a href="moral_responsibility.html" class="loop-card">
+                <h4 class="loop-title">2. Moral Responsibility</h4>
+                <p class="loop-desc">If our actions are determined, can we be truly responsible? If we have free will, what makes some choices blameworthy?</p>
+            </a>
+
+            <a href="quantum_mechanics.html" class="loop-card">
+                <h4 class="loop-title">3. Quantum Mechanics</h4>
+                <p class="loop-desc">Does quantum indeterminacy provide the foundation for free will, or does randomness merely replace one form of non-freedom with another?</p>
+            </a>
+
+            <a href="neuroscience.html" class="loop-card">
+                <h4 class="loop-title">4. Neuroscience & Brain</h4>
+                <p class="loop-desc">What do brain scans and neural activity tell us about the moment of choice? Are decisions made before we're aware of them?</p>
+            </a>
+
+            <a href="social_conditioning.html" class="loop-card">
+                <h4 class="loop-title">5. Social Conditioning</h4>
+                <p class="loop-desc">How much of who you are was shaped by forces beyond your control? Can you transcend your conditioning through conscious effort?</p>
+            </a>
+
+            <a href="practical_implications.html" class="loop-card">
+                <h4 class="loop-title">6. Practical Implications</h4>
+                <p class="loop-desc">How should we live, structure society, and treat each other if free will is real? If it's an illusion? Does the truth matter if we can't escape believing in choice?</p>
+            </a>
+        </div>
+
+        <div class="start-section">
+            <a href="consciousness.html" class="start-btn">Begin Your Journey</a>
+            <p style="margin-top: 20px; opacity: 0.8;">Start with Consciousness & Decision, or choose any loop that intrigues you.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Choice Engine - An Interactive Philosophy Experience</p>
+    </footer>
+</body>
+</html>

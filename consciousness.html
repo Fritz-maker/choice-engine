@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choice Engine: Consciousness & Decision</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Choice Engine: Consciousness & Decision</h1>
+        <p>Explore the nature of conscious choice and decision-making through competing philosophical lenses.</p>
+    </header>
+
+    <main>
+        <div id="preference-selection">
+            <h2>Choose Your Philosophical Lens:</h2>
+            <button id="choose-left" class="perspective-btn">🎯 Free Will Advocate</button>
+            <button id="choose-right" class="perspective-btn">⚙️ Determinist</button>
+        </div>
+
+        <div id="progress-indicator">Loop: <span id="current-loop">1 of 6</span></div>
+        <div id="unlock-status" class="hidden"></div>
+
+        <section id="content-area">
+            <div id="content-display">
+                <p class="placeholder-text">Select a philosophical perspective to begin exploring the nature of choice itself.</p>
+            </div>
+            <div id="engine-commentary">
+                <p class="placeholder-text">The Engine observes the paradox of choice...</p>
+            </div>
+        </section>
+
+        <section id="controls-and-score">
+            <button id="next-button">Explore the Next Angle</button>
+            <div id="current-score">Conviction Score: 0</div>
+        </section>
+
+        <nav id="loop-navigation">
+            <a href="index.html" class="nav-btn">← Return to Engine</a>
+            <a href="moral_responsibility.html" class="nav-btn">Next Loop: Moral Responsibility →</a>
+        </nav>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Choice Engine - Interactive Philosophy Experience</p>
+    </footer>
+
+    <script src="content/consciousness_content.js"></script>
+    <script src="js/game_logic.js"></script>
+</body>
+</html>
