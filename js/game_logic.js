@@ -384,6 +384,17 @@ function createFinalMessage() {
             <h4>🌟 Philosophical Journey Complete!</h4>
             <p>You have explored all aspects of the free will paradox.</p>
             <p>The Engine commends your dedication to philosophical inquiry.</p>
+            
+            <div class="completion-actions">
+                <button onclick="location.reload()" class="begin-again-btn">🔄 Explore Choices Again</button>
+                <a href="https://unity-loops.com/hub" class="explore-all-loops">
+                    🏛️ Explore All 6 Consciousness Loops
+                </a>
+            </div>
+            
+            <div class="frontier-motto">
+                <p>"It's Loops All the Way Down"</p>
+            </div>
         </div>
     `;
 }
