@@ -1,5 +1,5 @@
-// Choice Engine - Simple OZZYRABBIT Game Logic
-// Core game logic for Free Will vs Determinism interactive narrative
+// Choice Engine - Fixed Game Logic
+// FIXED: FRONTIER hub navigation only appears after final loop (Practical Implications)
 
 // Simple loop progression system
 const loopOrder = [
@@ -320,6 +320,8 @@ function showLoopCompletion() {
     const nextLoop = getNextLoop();
     const requiredScore = nextLoop ? nextLoop.unlockScore : null;
     
+    // FIXED: Basic completion screen WITHOUT FRONTIER navigation
+    // FRONTIER navigation only appears when this is the final loop
     contentDisplay.innerHTML = `
         <div class="completion-content">
             <h3>Loop Complete: ${currentLoopName}</h3>
@@ -379,24 +381,44 @@ function createNextLoopSection(nextLoop, requiredScore) {
 }
 
 function createFinalMessage() {
-    return `
-        <div class="journey-complete">
-            <h4>🌟 Philosophical Journey Complete!</h4>
-            <p>You have explored all aspects of the free will paradox.</p>
-            <p>The Engine commends your dedication to philosophical inquiry.</p>
-            
-            <div class="completion-actions">
-                <button onclick="location.reload()" class="begin-again-btn">🔄 Explore Choices Again</button>
-                <a href="https://unity-loops.com/hub" class="explore-all-loops">
-                    🏛️ Explore All 6 Consciousness Loops
-                </a>
+    // FIXED: Check if this is actually the final loop before showing FRONTIER navigation
+    const currentLoopName = getCurrentLoopName();
+    const isTrueFinalLoop = currentLoopName.includes('Practical Implications');
+    
+    if (isTrueFinalLoop) {
+        // Only show FRONTIER navigation for the actual final loop
+        return `
+            <div class="journey-complete">
+                <h4>🌟 Philosophical Journey Complete!</h4>
+                <p>You have explored all aspects of the free will paradox.</p>
+                <p>The Engine commends your dedication to philosophical inquiry.</p>
+                
+                <div class="completion-actions">
+                    <button onclick="location.reload()" class="begin-again-btn">🔄 Explore Choices Again</button>
+                    <a href="https://unity-loops.com/hub" class="explore-all-loops">
+                        🏛️ Explore All 6 Consciousness Loops
+                    </a>
+                </div>
+                
+                <div class="frontier-motto">
+                    <p>"It\'s Loops All the Way Down"</p>
+                </div>
             </div>
-            
-            <div class="frontier-motto">
-                <p>"It's Loops All the Way Down"</p>
+        `;
+    } else {
+        // For non-final loops, just show a simple completion message
+        return `
+            <div class="journey-complete">
+                <h4>🌟 Loop Complete!</h4>
+                <p>You have completed this stage of your philosophical journey.</p>
+                <p>The Engine has recorded your insights.</p>
+                
+                <div class="completion-actions">
+                    <button onclick="location.reload()" class="begin-again-btn">🔄 Explore This Loop Again</button>
+                </div>
             </div>
-        </div>
-    `;
+        `;
+    }
 }
 
 function showUnlockStatus(nextLoop, requiredScore) {
